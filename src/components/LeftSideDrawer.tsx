@@ -53,10 +53,17 @@ export default function LeftSideDrawer(
             </ListItem>
           </Link>
 
-          <Link to="/space" className="drawer-link">
-            <ListItem key={'space'} disablePadding>
+          <Link to="/meeting-room" className="drawer-link">
+            <ListItem key={'meeting-room'} disablePadding>
               <ListItemButton>
-                <ListItemText primary={'The Space'} />
+                <ListItemText primary={'The Meeting Room'} />
+              </ListItemButton>
+            </ListItem>
+          </Link>
+          <Link to="/auditorium" className="drawer-link">
+            <ListItem key={'auditorium'} disablePadding>
+              <ListItemButton>
+                <ListItemText primary={'The Auditorium'} />
               </ListItemButton>
             </ListItem>
           </Link>

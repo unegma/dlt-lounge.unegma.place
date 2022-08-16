@@ -10,6 +10,7 @@ import InfoModal from "./components/InfoModal";
 import LeftSideDrawer from "./components/LeftSideDrawer";
 import HomeScreen from "./components/HomeScreen";
 import SpaceOne from "./components/SpaceOne";
+import SpaceTwo from "./components/SpaceTwo";
 // import BookingModal from "./components/BookingModal";
 
 function App() {
@@ -55,10 +56,18 @@ function App() {
         />
 
         <Route
-          key={'space'}
-          path="/space"
+          key={'meeting-room'}
+          path="/meeting-room"
           element={
             <SpaceOne />
+          }
+        />
+
+        <Route
+          key={'auditorium'}
+          path="/auditorium"
+          element={
+            <SpaceTwo />
           }
         />
 
