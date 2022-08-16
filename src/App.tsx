@@ -56,18 +56,18 @@ function App() {
         />
 
         <Route
-          key={'meeting-room'}
-          path="/meeting-room"
-          element={
-            <SpaceOne />
-          }
-        />
-
-        <Route
           key={'auditorium'}
           path="/auditorium"
           element={
             <SpaceTwo />
+          }
+        />
+
+        <Route
+          key={'meeting-room'}
+          path="/meeting-room"
+          element={
+            <SpaceOne />
           }
         />
 
