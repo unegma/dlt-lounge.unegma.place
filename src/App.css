@@ -196,3 +196,7 @@ canvas {
   padding: 8px;
   padding-left: 14px;
 }
+
+.info-map {
+  min-height: 40vh;
+}

@@ -40,6 +40,11 @@ export default function InfoModal ({ showInfoModal, setShowInfoModal }: any) {
         <Typography className="secondaryColor">Address and Contact Details:</Typography>
         <Typography className="secondaryColor">{process.env.REACT_APP_CONTACT}</Typography>
         <Typography className="secondaryColor">{process.env.REACT_APP_ADDRESS}</Typography>
+        <iframe
+          src={process.env.REACT_APP_GOOGLE_MAP_URL}
+          width="100%" height="auto" className="info-map" loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade">
+        </iframe>
 
         <hr/>
         <Typography className="secondaryColor">
