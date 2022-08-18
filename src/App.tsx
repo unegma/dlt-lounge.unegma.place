@@ -5,6 +5,7 @@ import {
 import './App.css';
 import NavBar from "./components/NavBar";
 import {CameraAltOutlined, ChevronLeft, ChevronRight, InfoOutlined, Menu} from "@mui/icons-material";
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhotoViewer from "./components/PhotoViewer";
 import InfoModal from "./components/InfoModal";
 import LeftSideDrawer from "./components/LeftSideDrawer";
@@ -86,7 +87,7 @@ function App() {
       </div>
 
       <div className="buttons-container">
-        <InfoOutlined className="pointer" style={{ color: "white", margin: "0 4px" }} onClick={() => {setShowInfoModal(!showInfoModal)}}/>
+        <LocationOnIcon className="pointer" style={{ color: "white", margin: "0 4px" }} onClick={() => {setShowInfoModal(!showInfoModal)}}/>
 
         <div className="pointer" onClick={() => {setShowImages(!showImages)}}>
           <CameraAltOutlined  style={{ color: "white", margin: "0 4px" }} />

@@ -35,7 +35,7 @@ export default function InfoModal ({ showInfoModal, setShowInfoModal }: any) {
     >
       <Box component="div" sx={modalStyle}>
         <HighlightOffIcon className="closeModalButton" onClick={() => { setShowInfoModal(false)}}/>
-        <Typography variant="h3" className="secondaryColor">Info</Typography>
+        <Typography variant="h3" className="secondaryColor">Find Us!</Typography>
 
         <Typography className="secondaryColor">Address and Contact Details:</Typography>
         <Typography className="secondaryColor">{process.env.REACT_APP_CONTACT}</Typography>
