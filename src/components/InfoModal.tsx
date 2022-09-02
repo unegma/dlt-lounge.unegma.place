@@ -48,7 +48,7 @@ export default function InfoModal ({ showInfoModal, setShowInfoModal }: any) {
 
         <hr/>
         <Typography className="secondaryColor">
-          Contribute here: <a target="_blank" href="https://github.com/unegma/spaces">Github</a>.<br/>
+          Contribute here: <a target="_blank" href={process.env.REACT_APP_CONTRIBUTE_URL}>Github</a>.<br/>
           <span style={{float: 'right'}}>Made by <a target="_blank" href="https://unegma.com">unegma</a>.</span>
         </Typography>
       </Box>

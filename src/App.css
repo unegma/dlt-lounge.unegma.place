@@ -197,6 +197,71 @@ canvas {
   padding-left: 14px;
 }
 
+
+.booking-button {
+  color: white;
+  text-decoration: none;
+}
+
+.red {
+  color: red;
+}
+.green {
+  color: green;
+}
+
+.connect-button {
+}
+
+/* modal for connect */
+
+.closeModalButton {
+  cursor: pointer;
+  position: absolute !important;
+  right: 5px !important;
+  top:5px !important;
+  color: black;
+  cursor: pointer;
+}
+
+.modalTitle {
+  color: black;
+}
+
+.connectButtonContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.connectTypeButton {
+  margin-right: 5px !important;
+}
+
+.minitext {
+  font-size: 10px;
+}
+
+.web3connectButton {
+  color: white !important;
+  border: none !important;
+}
+
+.connectButton {
+  background-color: red !important;
+}
+
+.disconnectButton {
+  background-color: green !important;
+}
+
+.web3connectButton:hover {
+  opacity: 0.8 !important;
+}
+
+.buyButton {
+  margin-right: 5px !important;
+}
+
 .info-map {
   min-height: 40vh;
 }
