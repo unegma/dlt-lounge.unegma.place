@@ -18,11 +18,11 @@ type GLTFResult = GLTF & {
   }
 }
 
-export default function Space({ ...props }: JSX.IntrinsicElements['group']) {
+export default function MeetingRoom({ ...props }: JSX.IntrinsicElements['group']) {
   const group = useRef<THREE.Group>(null)
   const { nodes, materials } = useGLTF(SPACE_URL, 'https://www.gstatic.com/draco/versioned/decoders/1.4.1/') as GLTFResult
   return (
-    <group ref={group} {...props} dispose={null}>
+    <group ref={group} {...props} dispose={null} rotation={[0,0.3,0]}>
       <mesh castShadow receiveShadow geometry={nodes.Mesh_0003.geometry} material={materials['material_0.004']} />
     </group>
   )

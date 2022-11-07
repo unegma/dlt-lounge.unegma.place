@@ -5,6 +5,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Web3ConnectionButtons from '../components/Web3ConnectionButtons';
+import {Menu} from "@mui/icons-material";
 
 export default function NavBar(
   {toggleLeftSideDrawer, setShowBookingModal, showBookingModal}:
@@ -13,6 +14,9 @@ export default function NavBar(
     <Box component="div" sx={{ flexGrow: 1 }} className="navBar" >
       <AppBar position="fixed" color="transparent">
         <Toolbar>
+          <div className={`hamburger-button`}>
+            <Menu className="pointer" style={{ color: "white", margin: "4px 10px 0 -5px" }} onClick={(event) => {toggleLeftSideDrawer(event)}}/>
+          </div>
           <Typography className="main-title" variant="h6" component="div" sx={{ flexGrow: 1 }} onClick={(event:any) => {toggleLeftSideDrawer(event)}}>
             {process.env.REACT_APP_NAV_TITLE}
           </Typography>

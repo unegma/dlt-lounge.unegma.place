@@ -31,15 +31,18 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "pull-original": "git pull original main --allow-unrelated-histories",
+    "pull-original": ". .env && git pull $ORIGINAL_GITHUB_SSH main --allow-unrelated-histories",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "build-prod": "react-scripts build --prod",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "eval $(grep '^DEPLOYMENT_URI' .env) && eval $(grep '^PROFILE' .env) && aws --profile $PROFILE s3 sync --delete ./build s3://$DEPLOYMENT_URI",
+    "deploy": ". .env && aws --profile $PROFILE s3 sync --delete ./build s3://$AWS_BUCKET_NAME",
+    "1-create-bucket": ". .env && aws --profile $PROFILE s3api create-bucket --bucket $AWS_BUCKET_NAME --region $AWS_REGION --create-bucket-configuration LocationConstraint=$AWS_REGION",
+    "2-configure-bucket": ". .env && aws --profile $PROFILE s3api put-bucket-policy --bucket $AWS_BUCKET_NAME --policy file:///$PWD/settings/bucket_policy.json && aws --profile $PROFILE s3 website s3://$AWS_BUCKET_NAME --index-document index.html --error-document index.html",
     "BUILD-AND-DEPLOY": "npm run build && npm run deploy",
-    "BUILD-AND-DEPLOY-PROD": "npm run build-prod && npm run deploy"
+    "BUILD-AND-DEPLOY-PROD": "npm run build-prod && npm run deploy",
+    "DEPLOY": "npm run BUILD-AND-DEPLOY-PROD"
   },
   "eslintConfig": {
     "extends": [
@@ -60,6 +63,7 @@
     ]
   },
   "devDependencies": {
-    "@types/three": "^0.140.0"
+    "@types/three": "^0.140.0",
+    "sass": "^1.55.0"
   }
 }

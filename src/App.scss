@@ -1,7 +1,7 @@
 html, body {
   background: black;
   width: 100vw;
-  height: 100vh;
+  height: 100%; /* Using 100% because 100vh on mobiles will not include the navbar*/
 }
 
 #root {
@@ -15,41 +15,6 @@ html, body {
   overflow: hidden;
   height: 100%;
   width: 100%;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 canvas {
@@ -73,7 +38,7 @@ canvas {
 .buttons-container {
   position: absolute;
   z-index: 999;
-  bottom: 60px; /* fix for mobiles */
+  bottom: 0px;
   right: 0;
   padding: 5px;
   display: flex;
@@ -91,6 +56,27 @@ canvas {
 .buttons-container--left {
   left:0;
   right: inherit;
+}
+
+.buttons-container--left-helper {
+  //left:5vw;
+  right: inherit;
+}
+
+.buttons-container--mid-right {
+  display: flex;
+  flex-direction: column;
+  right:0;
+  bottom: 45%;
+  /*right: inherit;*/
+}
+
+.helperText {
+  color: white;
+  display: block;
+  margin: 5px 5px;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .pointer {
@@ -264,4 +250,11 @@ canvas {
 
 .info-map {
   min-height: 40vh;
+}
+
+.closeModalButton--large {
+  cursor: pointer;
+  position: absolute !important;
+  right: 15px !important;
+  bottom:15px !important;
 }

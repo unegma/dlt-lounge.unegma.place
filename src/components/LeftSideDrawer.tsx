@@ -9,22 +9,53 @@ import ListItemText from '@mui/material/ListItemText';
 import {Link} from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import {Menu} from "@mui/icons-material";
+import {MultiLevel} from "./SubMenus";
 
 export default function LeftSideDrawer(
   {drawerOpen, toggleLeftSideDrawer, setShowImages, setShowInfoModal}:
     {drawerOpen: any, toggleLeftSideDrawer: any, setShowImages: any, setShowInfoModal: any}) {
 
+  const SUBMENU_TITLE = 'The Space';
+  const spacesList = {
+    title: SUBMENU_TITLE,
+    items: [
+      {
+        key: 'auditorium',
+        name: "The Auditorium",
+      },
+      {
+        key: 'meeting-room',
+        name: "The Meeting Room",
+      },
+    ]
+  };
+
+  const preToggleLeftSideDrawer = (event: any) => {
+    // TODO would be better do to this based on parent element, but the js-ignore-close doesn't seem to be there
+    if (event.target.innerHTML === SUBMENU_TITLE || event.target.classList.contains('js-ignore-close')) {
+      event.preventDefault(); // todo might not be needed
+    } else {
+      toggleLeftSideDrawer(event);
+    }
+  }
+
   return (
     <Drawer
       open={drawerOpen}
-      onClose={(event:any) => {toggleLeftSideDrawer(event)}}
+      onClose={(event:any) => {preToggleLeftSideDrawer(event)}}
+      // PaperProps={{
+      //   sx: {
+      //     backgroundColor: "black",
+      //     color: "white",
+      //   }
+      // }}
     >
       <Box
         component="div"
         sx={{ width: 250 }}
         role="presentation"
-        onClick={(event: any) => {toggleLeftSideDrawer(event)}}
-        onKeyDown={(event: any) => {toggleLeftSideDrawer(event)}}
+        onClick={(event: any) => {preToggleLeftSideDrawer(event)}}
+        onKeyDown={(event: any) => {preToggleLeftSideDrawer(event)}}
       >
 
         <List>
@@ -32,8 +63,11 @@ export default function LeftSideDrawer(
 
           <Link to="/" className="drawer-link">
             <ListItem key={'nav'} disablePadding>
+              <div className={`hamburger-button`}>
+                <Menu className="pointer" style={{ color: "black", margin: "4px -4px 0 14px" }}/>
+              </div>
               <Typography className={`main-title main-title-navbar`} variant="h6" component="div" sx={{ flexGrow: 1 }}
-                          onClick={(event:any) => {toggleLeftSideDrawer(event)}}>
+                          onClick={(event:any) => {preToggleLeftSideDrawer(event)}}>
                 {process.env.REACT_APP_NAV_TITLE}
               </Typography>
             </ListItem>
@@ -52,28 +86,16 @@ export default function LeftSideDrawer(
               </ListItemButton>
             </ListItem>
           </Link>
-
-          <Link to="/auditorium" className="drawer-link">
-            <ListItem key={'auditorium'} disablePadding>
-              <ListItemButton>
-                <ListItemText primary={'The Auditorium'} />
-              </ListItemButton>
-            </ListItem>
-          </Link>
-          <Link to="/meeting-room" className="drawer-link">
-            <ListItem key={'meeting-room'} disablePadding>
-              <ListItemButton>
-                <ListItemText primary={'The Meeting Room'} />
-              </ListItemButton>
-            </ListItem>
-          </Link>
-
         </List>
 
-        <Divider />
+        <Divider className='light-divider' />
+
+        <MultiLevel className="js-ignore-close" item={spacesList} />
+
+        <Divider className='light-divider' />
 
         <List>
-          <ListItem key={'spaceone'} disablePadding onClick={() => setShowInfoModal(true)}>
+          <ListItem key={'info'} disablePadding onClick={() => setShowInfoModal(true)}>
             <ListItemButton>
               <ListItemText primary={'Find Us/Info'} />
             </ListItemButton>
@@ -85,10 +107,6 @@ export default function LeftSideDrawer(
             </ListItemButton>
           </ListItem>
         </List>
-
-        <div className={`buttons-container buttons-container--left`}>
-          <Menu className="pointer" style={{ color: "black", margin: "0 4px" }} onClick={(event) => {toggleLeftSideDrawer(event)}}/>
-        </div>
 
       </Box>
     </Drawer>
